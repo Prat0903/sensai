@@ -1,15 +1,22 @@
 import { getUserOnboardingStatus } from "@/actions/user";
+import { getIndustryInsights } from "@/actions/dashboard";
 import { redirect } from "next/navigation";
 import React from "react";
+import DashboardView from "./_components/dashboard-view";
 
 const IndustryInsightsPage = async () => {
   const { isOnboarded } = await getUserOnboardingStatus();
+  const insights = await getIndustryInsights();
 
   if (!isOnboarded) {
-    redirect('/onboarding')
+    redirect("/onboarding");
   }
 
-  return <div>IndustryInsightsPage</div>;
+  return (
+    <div className="container mx-auto">
+      <DashboardView insights={insights} />
+    </div>
+  );
 };
 
 export default IndustryInsightsPage;
