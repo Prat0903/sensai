@@ -69,7 +69,7 @@ model CoverLetter{
   @@index([userId])
 }
 
-model IndustryInsight{
+model IndustryInsight {
   id            String    @id @default(cuid())
   industry      String    @unique  // The industry this data belongs to (e.g., "tech-software-development")
   
